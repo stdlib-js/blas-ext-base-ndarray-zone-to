@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,17 +16,11 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var reinterpret = require( '@stdlib/strided-base-reinterpret-complex128' );
-var serialize = require( '@stdlib/ndarray-base-serialize-meta-data' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var addon = require( './../src/addon.node' );
-
-
-// MAIN //
+import { complex128ndarray } from '@stdlib/types/ndarray';
 
 /**
 * Fills a one-dimensional double-precision complex floating-point ndarray with linearly spaced numeric elements which increment by `1` starting from one.
@@ -37,9 +31,8 @@ var addon = require( './../src/addon.node' );
 *
 *     -   a one-dimensional input ndarray.
 *
-* @private
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {ndarray} input ndarray
+* @param arrays - array-like object containing ndarrays
+* @returns input ndarray
 *
 * @example
 * var Complex128Vector = require( '@stdlib/ndarray-vector-complex128' );
@@ -49,13 +42,9 @@ var addon = require( './../src/addon.node' );
 * var out = zoneTo( [ x ] );
 * // returns <ndarray>[ <Complex128>[ 1.0, 0.0 ], <Complex128>[ 2.0, 0.0 ], <Complex128>[ 3.0, 0.0 ], <Complex128>[ 4.0, 0.0 ] ]
 */
-function zoneTo( arrays ) {
-	var x = arrays[ 0 ];
-	addon( reinterpret( getData( x ), 0 ), serialize( x ) );
-	return x;
-}
+declare function zoneTo( arrays: [ complex128ndarray ] ): complex128ndarray;
 
 
 // EXPORTS //
 
-module.exports = zoneTo;
+export = zoneTo;
